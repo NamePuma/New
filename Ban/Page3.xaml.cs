@@ -28,6 +28,7 @@ namespace Ban
         public Page3()
         {
             InitializeComponent();
+         
             Connect("10.14.206.27", "5432", "student", "1234", "mmm");
             DataContext = this;
             Speciality = new ObservableCollection<Specialities>();
