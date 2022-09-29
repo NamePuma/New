@@ -1,0 +1,51 @@
+﻿<Page x:Class="Ban.Page5"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ban"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page5">
+
+    <Grid>
+        <GroupBox Foreground="Red"  Grid.Column="2" Header="Студент">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <Label Foreground="Blue"  Content="Имя"></Label>
+                    <TextBox 
+                Name="studentName">
+                    </TextBox>
+                    <Label Foreground="blue"  Content="Фамилию"></Label>
+                    <TextBox Name="Surname">
+                    </TextBox>
+
+
+                    <Label Foreground="Blue"  Content="Выберите группу"></Label>
+                </StackPanel>
+                <ListBox 
+                    Grid.Row="1"
+                    Name="takeGroupId"
+                    ItemsSource="{Binding Groups}" Height="140" VerticalAlignment="Top">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Label Content="{Binding  GroupID}"></Label>
+                                <Label Content="{Binding  Course}"></Label>
+                                <Label Content="{Binding  NameSpet}"></Label>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+                <Button Foreground="white"  Background="blue" Content="Создать" Click="AddStudent" Grid.Row="1" Margin="0,169,0,44"></Button>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>
