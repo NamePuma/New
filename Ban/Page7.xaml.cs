@@ -12,36 +12,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 using Npgsql;
 using NpgsqlTypes;
-using System.Collections.ObjectModel;
-
 namespace Ban
 {
     /// <summary>
-    /// Логика взаимодействия для Page4.xaml
+    /// Логика взаимодействия для Page7.xaml
     /// </summary>
-    public partial class Page4 : Page
+    public partial class Page7 : Page
     {
         public ObservableCollection<Specialities> Speciality { get; set; }
         public ObservableCollection<Group> Groups { get; set; }
-        public Page4()
+        public Page7()
         {
-         
+
 
             InitializeComponent();
-            Speciality = new ObservableCollection<Specialities>();
-            Groups = new ObservableCollection<Group>();
+            InitializeComponent();
 
             Connect("10.14.206.27", "5432", "student", "1234", "mmm");
 
             DataContext = this;
 
-           
+            Speciality = new ObservableCollection<Specialities>();
+            Groups = new ObservableCollection<Group>();
 
-LoadGroup();
-            LoadSpett();
+
             
+            LoadGroup();
         }
         private NpgsqlConnection connection;
         public void Connect(string host, string port, string username, string password, string database)
@@ -51,29 +50,10 @@ LoadGroup();
                 host, port, username, password, database));
             connection.Open();
         }
-        private void AddGroup(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string groupid = groupID.Text.Trim();
-            var groupSpeciality = (takeSpecialityName.SelectedItem as Specialities).Id;
-            int course = int.Parse(courseGroup.Text.Trim());
 
-            if (groupid == null || course == null) return;
-
-            NpgsqlCommand command = new NpgsqlCommand();
-            command.Connection = connection;
-            command.CommandText = "INSERT INTO study_group (number, course, specialty) VALUES(@groupid, @course, @groupSpeciality)";
-            command.Parameters.AddWithValue("@groupid", NpgsqlDbType.Varchar, groupid);
-            command.Parameters.AddWithValue("@course", NpgsqlDbType.Integer, course);
-            command.Parameters.AddWithValue("@groupSpeciality", NpgsqlDbType.Integer, groupSpeciality);
-            var result = command.ExecuteNonQuery();
-            if (result == 1)
-            {
-                MessageBox.Show("Группа добавлена");
-                LoadGroup();
-            }
-
-            groupID.Clear();
-            courseGroup.Clear();
         }
         private void LoadGroup()
         {
@@ -91,9 +71,10 @@ LoadGroup();
                 }
             }
             result.Close();
-            
+
+
         }
-        private void LoadSpett()
+         private void LoadSpett()
         {
             NpgsqlCommand command = new NpgsqlCommand();
             command.Connection = connection;
@@ -108,6 +89,19 @@ LoadGroup();
             }
             result.Close();
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            var a = mama1.Text.Trim();
+            var b = mama2.Text.Trim().ToString();
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "Update study_group set number =@a,  course =@b  where number = @a ";
+            cmd.Parameters.AddWithValue("@a", NpgsqlDbType.Varchar, a);
+            cmd.Parameters.AddWithValue("@b", NpgsqlDbType.Integer, b);
+            cmd.ExecuteNonQuery();
         }
     }
 }

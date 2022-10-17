@@ -24,6 +24,8 @@
                     Name="qualification">
                 </TextBox>
                 <Button Height="50" Margin="40" Foreground="white"  Background="Blue" Content="Создать" Click="AddSpeciality"></Button>
+                <Label Height="30"> </Label>
+                <Button Name="buttonForRed" Click="buttonForRed_Click" Content="Редактировать"> </Button>
             </StackPanel>
         </GroupBox>
         

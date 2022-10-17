@@ -31,7 +31,7 @@
                 <ListBox 
                     Grid.Row="1"
                     ItemsSource="{Binding Speciality}"
-                    Name="takeSpecialityName" Margin="0,0,0,108"
+                    Name="takeSpecialityName" Margin="0,0,0,186"
                     >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -42,8 +42,10 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
+                    
                 </ListBox>
-                <Button Foreground="White"  Background="Blue" Content="Создать" Click="AddGroup" Grid.Row="1" Margin="0,212,0,45"></Button>
+                <Button Foreground="White"  Background="Blue" Content="Создать" Click="AddGroup" Grid.Row="1" Margin="0,156,0,100"></Button>
+                
             </Grid>
         </GroupBox>
     </Grid>

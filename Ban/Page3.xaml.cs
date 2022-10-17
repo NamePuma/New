@@ -86,5 +86,10 @@ namespace Ban
             result.Close();
 
         }
+
+        private void buttonForRed_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate( new Page6());
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace qwe
           private Ban.Page3 page3;
           private Ban.Page4 page4;
           private Ban.Page5 page5;
+        private Ban.employee employee;
 
 
         public MainWindow()
@@ -32,6 +33,7 @@ namespace qwe
             InitializeComponent();
 
             Strani.Navigate(new Ban.Page3());
+           
 
             
         }
@@ -64,6 +66,16 @@ namespace qwe
                 page5 = new Ban.Page5();
             }
             Strani.Navigate(page5);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if(employee == null)
+            {
+                employee = new Ban.employee();
+            }
+            Strani.Navigate(employee);
+
         }
     }
 }
